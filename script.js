@@ -6,18 +6,30 @@ function CoresDaPaleta() {
      cor[3].style.background = 'blue'
 }
 CoresDaPaleta()
-
-
-const paleta1 = document.getElementsByTagName('li')[0];
-const paleta2 = document.getElementsByTagName('li')[1];
-const paleta3 = document.getElementsByTagName('li')[2];
-const paleta4 = document.getElementsByTagName('li')[3];
+/////////////////////////////////////////////////////////
  function paletaSelecionada(event) {
     const selected = document.querySelector('.selected');
     selected.classList.remove('selected')
     event.target.classList.add('selected')
 }
-paleta1.addEventListener('click', paletaSelecionada)
-paleta2.addEventListener('click', paletaSelecionada)
-paleta3.addEventListener('click', paletaSelecionada)
-paleta4.addEventListener('click', paletaSelecionada)
+const paleta = document.getElementsByTagName('li');
+for(i=0; i < paleta.length; i+=1) {
+    paleta[i].addEventListener('click', paletaSelecionada)
+}
+/////////////////////////////////////////////////////////////////
+function pintar(event) {
+    const selected = document.querySelector('.selected');
+    event.target.style.background = selected.style.background
+}
+const pixel = document.getElementsByClassName('pixel')
+for(i=0; i < pixel.length; i+=1) {
+    pixel[i].addEventListener('click', pintar)
+}
+////////////////////////////////////////////////////////////////
+function clear() {
+    for(i=0; i < pixel.length; i+=1) {
+         pixel[i].style.background = 'white'
+    }
+}
+const button = document.getElementById('clear-board')
+button.addEventListener('click', clear)
